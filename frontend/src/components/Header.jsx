@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <header className='h-16 shadow-md bg-white'>
-        <div className='h-full container mx-auto flex items-center justify-between'>
+        <div className='h-full container mx-auto px-4 flex items-center justify-between'>
             <div className='h-full'>
                 <Link to={"/"}>
                     <Logo w={90} h={50}/>

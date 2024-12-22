@@ -7,6 +7,26 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
+    const [data, setData] = useState({
+        email: '',
+        password: ''
+    })
+
+    const handleOnChange = (e)=>{
+        const {name, value} = e.target
+
+        setData((preve)=>{
+            return{
+                ...preve,
+                [name]: value
+            }
+        })
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+    }
+
   return (
     <section id='login'>
         <div className='mx-auto container p-4'>
@@ -15,18 +35,18 @@ const Login = () => {
                     <img src={loginIcon} alt="login icon" />
                 </div>
 
-                <form action="" className='pt-6'>
+                <form onSubmit={handleSubmit} className='pt-6 flex flex-col gap-2'>
                     <div >
                         <label htmlFor="email">Email: </label>
                         <div className='bg-slate-100 p-2'>
-                            <input type="email" name="email" placeholder='enter email' className='w-full h-full outline-none bg-transparent'/>
+                            <input type="email" name="email" value={data.email} onChange={handleOnChange} placeholder='enter email' className='w-full h-full outline-none bg-transparent'/>
                         </div>
                     </div>
 
                     <div >
                         <label htmlFor="password">Password: </label>
                         <div className='bg-slate-100 p-2 flex'>
-                            <input type={showPassword ? "text" : "password"} name="password" placeholder='enter password' className='w-full h-full outline-none bg-transparent'/>
+                            <input type={showPassword ? "text" : "password"} name="password" value={data.password} onChange={handleOnChange} placeholder='enter password' className='w-full h-full outline-none bg-transparent'/>
                             <div className='cursor-pointer text-xl' onClick={()=>setShowPassword((preve)=>!preve)}>
                                 <span>
                                     {
