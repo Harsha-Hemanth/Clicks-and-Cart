@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import loginIcon from '../assets/signin.gif'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import imageTobase64 from '../helpers/imageTobase64';
+import { toast } from 'react-toastify'
+import summaryApi from '../common';
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -15,6 +17,8 @@ const SignUp = () => {
           confirmPassword: '',
           profilePic: '',
       })
+
+      const navigate = useNavigate()
   
       const handleOnChange = (e)=>{
           const {name, value} = e.target
@@ -38,8 +42,31 @@ const SignUp = () => {
         })
       }
   
-      const handleSubmit = (e)=>{
+      const handleSubmit = async(e)=>{
           e.preventDefault()
+
+          if (data.password === data.confirmPassword){
+            const dataResponse = await fetch(summaryApi.SignUp.url, {
+                method: summaryApi.SignUp.method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            
+            const dataApi = await dataResponse.json()
+
+            if (dataApi.success){
+                toast.success(dataApi.message)
+                navigate('/login')
+            } else{
+                toast.error(dataApi.message)
+            }
+
+          } else{
+            alert('Password and Confirm Password do not match')
+          }
+
       }
   
   return (
