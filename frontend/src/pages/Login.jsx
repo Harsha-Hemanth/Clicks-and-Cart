@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import loginIcon from '../assets/signin.gif'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import summaryApi from '../common';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -11,6 +13,7 @@ const Login = () => {
         email: '',
         password: ''
     })
+    const navigate = useNavigate()
 
     const handleOnChange = (e)=>{
         const {name, value} = e.target
@@ -23,8 +26,26 @@ const Login = () => {
         })
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault()
+
+        const dataResponse = await fetch(summaryApi.signIn.url,{
+            method: summaryApi.signIn.method,
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+
+        const dataApi = await dataResponse.json()
+
+        if (dataApi.success){
+            toast.success(dataApi.message)
+            navigate('/')
+        } else{
+            toast.error(dataApi.message)
+        }
     }
 
   return (
