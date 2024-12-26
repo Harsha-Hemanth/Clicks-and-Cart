@@ -4,9 +4,11 @@ import { FaSearch } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
+    const user = useSelector(state => state?.user?.user)
   return (
     <header className='h-16 shadow-md bg-white'>
         <div className='h-full container mx-auto px-4 flex items-center justify-between'>
@@ -25,7 +27,13 @@ const Header = () => {
 
             <div className='flex items-center gap-7'>
                 <div className='text-3xl cursor-pointer'>
-                    <FaRegCircleUser />
+                    {
+                        user?.profilePic ? (
+                            <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} />
+                        ) : (
+                            <FaRegCircleUser />
+                        )
+                    }
                 </div>
 
                 <div className='text-2xl relative'>
