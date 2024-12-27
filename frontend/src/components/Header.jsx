@@ -4,11 +4,31 @@ import { FaSearch } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import summaryApi from '../common';
+import { toast } from 'react-toastify'
+import { setUserDetails } from '../store/userSlice';
 
 
 const Header = () => {
     const user = useSelector(state => state?.user?.user)
+    const dispatch = useDispatch()
+
+    const handleLogout = async()=>{
+        const fetchData = await fetch(summaryApi.logout.url,{
+            method: summaryApi.logout.method,
+            credentials: 'include'
+        })
+
+        const data = await fetchData.json()
+
+        if (data.success){
+            toast.success(data.message)
+            dispatch(setUserDetails(null))
+        } else {
+            toast.error(data.message)
+        }
+    }
   return (
     <header className='h-16 shadow-md bg-white'>
         <div className='h-full container mx-auto px-4 flex items-center justify-between'>
@@ -45,7 +65,14 @@ const Header = () => {
                 </div>
 
                 <div>
-                    <Link to={"login"} className='bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700'>Login</Link>
+                    {
+                        user?._id ? (
+                            <button onClick={handleLogout} className='bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700'>Logout</button>
+                        ) : (
+                            <Link to={"login"} className='bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700'>Login</Link>
+                        )
+                    }
+                    
                 </div>
             </div>
         </div>
