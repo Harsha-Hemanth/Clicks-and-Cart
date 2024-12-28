@@ -49,27 +49,6 @@ const Header = () => {
             </div>
 
             <div className='flex items-center gap-7'>
-                <div className='relative flex justify-center'>
-                    <div className='text-3xl cursor-pointer relative flex justify-center' onClick={()=>setMenuDisplay(preve => !preve)}>
-                        {
-                            user?.profilePic ? (
-                                <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} />
-                            ) : (
-                                <FaRegCircleUser />
-                            )
-                        }
-                    </div>
-
-                    {
-                        menuDisplay && (
-                        <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded'>
-                            <nav>
-                                <Link to={"profile"} className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Profile</Link>
-                            </nav>
-                        </div>
-                        )
-                    }
-                </div>
 
                 <div className='text-2xl relative'>
                     <span><FaShoppingCart /></span>
@@ -82,7 +61,28 @@ const Header = () => {
                 <div>
                     {
                         user?._id ? (
-                            <button onClick={handleLogout} className='bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700'>Logout</button>
+                            <div className='relative flex justify-center'>
+                                <div className='text-3xl cursor-pointer relative flex justify-center' onClick={()=>setMenuDisplay(preve => !preve)}>
+                                    {
+                                        user?.profilePic ? (
+                                            <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} />
+                                        ) : (
+                                            <FaRegCircleUser />
+                                        )
+                                    }
+                                </div>
+
+                                {
+                                    menuDisplay && (
+                                    <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded'>
+                                        <nav>
+                                            <Link to={"profile"} className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Profile</Link>
+                                            <button onClick={()=>{setMenuDisplay(preve => !preve); handleLogout()}} className='whitespace-nowrap hover:bg-slate-100 p-2'>Logout</button>
+                                        </nav>
+                                    </div>
+                                    )
+                                }
+                            </div>
                         ) : (
                             <Link to={"login"} className='bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700'>Login</Link>
                         )
