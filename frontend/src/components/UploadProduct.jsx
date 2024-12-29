@@ -60,13 +60,6 @@ const UploadProduct = ({onClose}) => {
     const handleSubmit = async(e)=>{
         e.preventDefault()
 
-        setData((preve)=>{
-            return {
-                ...preve,
-                seller: user.name
-            }
-        })
-
         const response = await fetch(summaryApi.uploadProduct.url,{
             method: summaryApi.uploadProduct.method,
             credentials: 'include',
@@ -120,7 +113,7 @@ const UploadProduct = ({onClose}) => {
 
                 <label htmlFor="category" className='mt-3'>Category: </label>
                 <select required name="category" value={data.category} className='w-full p-2 border border-gray-400 rounded' onChange={handleOnChange}>
-                <option value="">Select Category</option>
+                <option value="" key="">Select Category</option>
                     {
                         productCategory.map((el, index)=>{
                             return (

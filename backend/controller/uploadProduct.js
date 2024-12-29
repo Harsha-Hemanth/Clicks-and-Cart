@@ -10,6 +10,7 @@ async function uploadProductController(req, res){
         }
 
         const uploadProduct = new productModel(req.body)
+        uploadProduct.seller = sessionUserId
         const saveProduct = await uploadProduct.save()
 
         res.status(201).json({

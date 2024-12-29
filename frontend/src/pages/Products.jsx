@@ -1,13 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UploadProduct from '../components/UploadProduct'
+import summaryApi from '../common'
 
 const Products = () => {
   const [openUploadProduct, setOpenUploadProduct] = useState(false)
+  const [products, setProducts] = useState([])
+
+  const fetchProducts = async()=>{
+    const response = await fetch(summaryApi.products.url,{
+      method: summaryApi.products.method,
+      credentials: 'include'
+    })
+    const dataResponse = await response.json()
+
+    setProducts(dataResponse?.data || [])
+  }
+
+  useEffect(()=>{
+    fetchProducts()
+  },[])
   return (
     <div>
       <div className='bg-white px-4 py-2 flex justify-between items-center'>
         <h2 className='font-bold text-lg'>Products</h2>
         <button className='border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-all px-3 py-1 rounded-full' onClick={()=>setOpenUploadProduct(true)}>Upload Product</button>
+      </div>
+
+      <div className='flex items-center gap-5 py-4'>
+        {
+          products.map((product, index)=>{
+            return(
+              <div className='bg-white p-4 rounded'>
+                <img src={product?.image[0]} alt="product image" width={120} height={120} />
+                <h1>{product?.productName}</h1>
+              </div>
+            )
+          })
+        }
       </div>
 
       {
