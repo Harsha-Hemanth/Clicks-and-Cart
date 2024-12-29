@@ -13,11 +13,11 @@ const ProductCard = ({data, fetchdata}) => {
             </div>
             <img src={data?.image[0]} className='mx-auto' alt="product image" width={120} height={120} />
             <h1>{data?.productName}</h1>
-            <div>
+            <p className='font-semibold'>
                 {
                     displayINR(data?.sellingPrice)
                 }
-            </div>
+            </p>
         </div>
         {
             editProduct && (
