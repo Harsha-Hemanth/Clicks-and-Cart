@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import UploadProduct from '../components/UploadProduct'
 import summaryApi from '../common'
+import ProductCard from '../components/ProductCard'
 
 const Products = () => {
   const [openUploadProduct, setOpenUploadProduct] = useState(false)
@@ -30,10 +31,7 @@ const Products = () => {
         {
           products.map((product, index)=>{
             return(
-              <div className='bg-white p-4 rounded'>
-                <img src={product?.image[0]} alt="product image" width={120} height={120} />
-                <h1>{product?.productName}</h1>
-              </div>
+              <ProductCard data={product} key={index} fetchdata={fetchProducts}/>
             )
           })
         }

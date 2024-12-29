@@ -6,6 +6,7 @@ const authToken = require('../middleware/authToken')
 const userLogout = require('../controller/userLogout')
 const uploadProductController = require('../controller/uploadProduct')
 const productsController = require('../controller/products')
+const updateProductController = require('../controller/updateProduct')
 
 const router = express.Router()
 
@@ -16,6 +17,7 @@ router.get('/logout', userLogout)
 
 router.post('/upload-product',authToken, uploadProductController)
 router.get("/products", authToken, productsController)
+router.post("/update-product", authToken, updateProductController)
 
 
 module.exports = router
