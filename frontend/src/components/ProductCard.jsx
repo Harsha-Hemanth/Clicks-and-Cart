@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { MdEdit } from "react-icons/md";
 import EditProduct from './EditProduct';
+import displayINR from '../helpers/displayCurrency';
 
 const ProductCard = ({data, fetchdata}) => {
     const [editProduct, setEditProduct] = useState(false)
@@ -13,7 +14,9 @@ const ProductCard = ({data, fetchdata}) => {
             <img src={data?.image[0]} className='mx-auto' alt="product image" width={120} height={120} />
             <h1>{data?.productName}</h1>
             <div>
-                <p>Price: {data?.sellingPrice}</p>
+                {
+                    displayINR(data?.sellingPrice)
+                }
             </div>
         </div>
         {
