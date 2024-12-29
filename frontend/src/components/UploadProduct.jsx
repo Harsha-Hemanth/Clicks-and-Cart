@@ -5,6 +5,9 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import uploadImage from '../helpers/uploadImage';
 import DisplayImage from './DisplayImage';
 import { MdDelete } from "react-icons/md";
+import summaryApi from '../common';
+import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux';
 
 const UploadProduct = ({onClose}) => {
     const [data, setData] = useState({
@@ -14,9 +17,11 @@ const UploadProduct = ({onClose}) => {
         image: [],
         description: "",
         price: "",
-        sellingPrice: ""
+        sellingPrice: "",
+        seller: ""
     })
     
+    const user = useSelector(state => state?.user?.user);
     const [viewImage, setViewImage] = useState("")
     const [openViewImage, setOpenViewImage] = useState(false)
     const handleOnChange = (e)=>{
@@ -52,8 +57,33 @@ const UploadProduct = ({onClose}) => {
         })
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
         e.preventDefault()
+
+        setData((preve)=>{
+            return {
+                ...preve,
+                seller: user.name
+            }
+        })
+
+        const response = await fetch(summaryApi.uploadProduct.url,{
+            method: summaryApi.uploadProduct.method,
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+
+        const responseData = await response.json()
+
+        if (responseData.success){
+            toast.success(responseData?.message)
+            onClose()
+        } else{
+            toast.error(responseData?.message)
+        }
     }
   return (
     <div className='fixed w-full h-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center'>
@@ -74,6 +104,7 @@ const UploadProduct = ({onClose}) => {
                     value={data.productName} 
                     onChange={handleOnChange}
                     className='w-full p-2 border border-gray-400 rounded'
+                    required
                 />
 
                 <label htmlFor="brand" className='mt-3'>Brand: </label>
@@ -84,10 +115,11 @@ const UploadProduct = ({onClose}) => {
                     value={data.brand} 
                     onChange={handleOnChange}
                     className='w-full p-2 border border-gray-400 rounded'
+                    required
                 />
 
                 <label htmlFor="category" className='mt-3'>Category: </label>
-                <select name="category" value={data.category} className='w-full p-2 border border-gray-400 rounded' onChange={handleOnChange}>
+                <select required name="category" value={data.category} className='w-full p-2 border border-gray-400 rounded' onChange={handleOnChange}>
                 <option value="">Select Category</option>
                     {
                         productCategory.map((el, index)=>{
@@ -142,6 +174,7 @@ const UploadProduct = ({onClose}) => {
                     value={data.price} 
                     onChange={handleOnChange}
                     className='w-full p-2 border border-gray-400 rounded'
+                    required
                 />
 
                 <label htmlFor="sellingPrice" className='mt-3'>Selling Price: </label>
@@ -152,6 +185,7 @@ const UploadProduct = ({onClose}) => {
                     value={data.sellingPrice} 
                     onChange={handleOnChange}
                     className='w-full p-2 border border-gray-400 rounded'
+                    required
                 />
 
                 <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700'>Upload Product</button>

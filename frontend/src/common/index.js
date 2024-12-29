@@ -16,6 +16,10 @@ const summaryApi = {
     logout: {
         url: `${backendDomain}/api/logout`,
         method: 'GET',
+    },
+    uploadProduct: {
+        url: `${backendDomain}/api/upload-product`,
+        method: 'POST',
     }
 
 }
