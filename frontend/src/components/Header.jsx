@@ -75,7 +75,7 @@ const Header = () => {
 
                                 {
                                     menuDisplay && (
-                                    <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded'>
+                                    <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded z-10'>
                                         <nav>
                                             {
                                                 (user?.role === role.admin) && (
