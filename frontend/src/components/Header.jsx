@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import summaryApi from '../common';
 import { toast } from 'react-toastify'
 import { setUserDetails } from '../store/userSlice';
+import role from '../common/role';
 
 
 const Header = () => {
@@ -76,8 +77,12 @@ const Header = () => {
                                     menuDisplay && (
                                     <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded'>
                                         <nav>
-                                            <Link to={"profile"} className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Profile</Link>
-                                            <button onClick={()=>{setMenuDisplay(preve => !preve); handleLogout()}} className='whitespace-nowrap hover:bg-slate-100 p-2'>Logout</button>
+                                            {
+                                                (user?.role === role.admin) && (
+                                                    <Link to={"admin-panel"} className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Admin Panel</Link>
+                                                )
+                                            }
+                                            <button onClick={()=>{setMenuDisplay(preve => !preve); handleLogout()}} className='w-full whitespace-nowrap hover:bg-slate-100 p-2'>Logout</button>
                                         </nav>
                                     </div>
                                     )

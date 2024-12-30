@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaRegCircleUser } from 'react-icons/fa6'
 import { useSelector } from 'react-redux'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import role from '../common/role'
 
-const Profile = () => {
+const AdminPanel = () => {
     const user = useSelector(state => state?.user?.user)
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if (user?.role !== role.admin){
+            navigate('/')
+        }
+    },[user])
   return (
     <div className='min-h-[calc(100vh-120px)] flex'>
         <aside className='bg-white min-h-full w-full max-w-60 customShadow'>
@@ -25,11 +31,7 @@ const Profile = () => {
 
             <div>
                 <nav className='grid p-4'>
-                    {
-                        user?.role === role.admin && (
-                            <Link to={"products"} className='px-2 py-1 hover:bg-slate-100'>Products</Link>
-                        )
-                    }
+                    <Link to={"products"} className='px-2 py-1 hover:bg-slate-100'>Products</Link>
                     <Link to={"orders"} className='px-2 py-1 hover:bg-slate-100'>Orders</Link>
                 </nav>
             </div>
@@ -42,4 +44,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default AdminPanel

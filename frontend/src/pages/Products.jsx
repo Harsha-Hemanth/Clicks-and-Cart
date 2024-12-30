@@ -21,13 +21,13 @@ const Products = () => {
     fetchProducts()
   },[])
   return (
-    <div>
+    <div className='p-3'>
       <div className='bg-white px-4 py-2 flex justify-between items-center'>
         <h2 className='font-bold text-lg'>Products</h2>
         <button className='border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-all px-3 py-1 rounded-full' onClick={()=>setOpenUploadProduct(true)}>Upload Product</button>
       </div>
 
-      <div className='flex items-center flex-wrap gap-5 py-4 h-[calc(100vh-190px)] overflow-y-scroll'>
+      <div className='flex items-start flex-wrap gap-5 py-4 h-[calc(100vh-212px)] overflow-y-scroll'>
         {
           products.map((product, index)=>{
             return(
