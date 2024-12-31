@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import fetchCategoryProducts from '../helpers/fetchCategoryProducts'
 import displayINR from '../helpers/displayCurrency'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
+import addToCart from '../helpers/addToCart'
 
 const HorizontalCardProduct = ({category, heading}) => {
     const [data, setData] = useState([])
@@ -39,7 +41,7 @@ const HorizontalCardProduct = ({category, heading}) => {
                 loading ? (
                     loadingList.map((product,index)=>{
                         return(
-                            <div className='w-full min-w-[300px] md:min-w-[320px] max-w-[300px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
+                            <div className='w-full min-w-[300px] md:min-w-[320px] max-w-[300px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex' key={index}>
                                 <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse'>
     
                                 </div>
@@ -58,7 +60,7 @@ const HorizontalCardProduct = ({category, heading}) => {
                 ) : (
                     data.map((product, index)=>{
                         return(
-                            <div className='w-full min-w-[300px] md:min-w-[320px] max-w-[300px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex' key={index}>
+                            <Link to={"product/"+product?._id} className='w-full min-w-[300px] md:min-w-[320px] max-w-[300px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex' key={index}>
                                 <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]'>
                                     <img src={product.image[0]} alt={product.productName} className='h-full object-scale-down hover:scale-110 transition-all' />
                                 </div>
@@ -69,9 +71,9 @@ const HorizontalCardProduct = ({category, heading}) => {
                                         <p className='text-red-600 font-medium'>{displayINR(product?.sellingPrice)}</p>
                                         <p className='text-slate-500 line-through'>{displayINR(product?.price)}</p>
                                     </div>
-                                    <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full'>Add to Cart</button>
+                                    <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full' onClick={(e)=>addToCart(e, product._id)}>Add to Cart</button>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     })
                 )

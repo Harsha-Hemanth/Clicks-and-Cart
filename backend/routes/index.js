@@ -9,6 +9,7 @@ const productsController = require('../controller/product/products')
 const updateProductController = require('../controller/product/updateProduct')
 const getCategoryProduct = require('../controller/product/getCategoryProduct')
 const getCategoryProducts = require('../controller/product/getCategoryProducts')
+const getProductDetails = require('../controller/product/getProductDetails')
 
 const router = express.Router()
 
@@ -23,6 +24,7 @@ router.post("/update-product", authToken, updateProductController)
 
 router.get("/get-category-product", getCategoryProduct)
 router.post("/get-category-products", getCategoryProducts)
+router.post("/get-product-details", getProductDetails)
 
 
 module.exports = router
