@@ -55,7 +55,7 @@ const BannerProduct = () => {
                 </div>
             </div>
 
-            <div className='hidden md:flex h-full w-full overflow-hidden'>
+            <div className='hidden sm:flex h-full w-full overflow-hidden'>
                 {
                     img.map((image, index)=>{
                         return(
@@ -67,7 +67,7 @@ const BannerProduct = () => {
                 }
             </div>
 
-            <div className='flex h-full w-full overflow-hidden md:hidden'>
+            <div className='flex h-full w-full overflow-hidden sm:hidden'>
                 {
                         imgMobile.map((image,index)=>{
                             return(
