@@ -27,7 +27,7 @@ const CategoryList = ()=>{
                     loading ? (
                         categoryLoading.map((el, index)=>{
                             return(
-                                <div>
+                                <div key={index}>
                                     <div className="h-16 w-16 md:w-20 md:h-20 rounded-full overflow-hidden bg-slate-200 animate-pulse" key={"categoryLoading"+index}></div>
                                     <p className="text-center text-sm md:text-base capitalize animate-pulse">...</p>
                                 </div>
