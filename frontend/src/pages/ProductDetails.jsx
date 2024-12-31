@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import summaryApi from '../common'
 import { FaStar, FaStarHalf } from 'react-icons/fa6'
 import displayINR from '../helpers/displayCurrency'
-import CategoryProducts from './CategoryProducts'
+import CategroyWiseProducts from '../components/CategoryWiseProducts'
 
 const ProductDetails = () => {
     const [data, setData] = useState({
@@ -54,7 +54,6 @@ const ProductDetails = () => {
     const handleImageZoom = useCallback((e)=>{
         setZoomImage(true)
         const { left, top, width, height } = e.target.getBoundingClientRect()
-        console.log(left, top, width, height)
         const x = (e.clientX - left) / width
         const y = (e.clientY - top) / height
         setZoomImageCoordinate({x, y})
@@ -172,6 +171,12 @@ const ProductDetails = () => {
                 )
             }
         </div>
+
+        {
+            data.category && (
+            <CategroyWiseProducts category={data?.category} heading={"Recommended Products"}/>
+            )
+        }
     </div>
   )
 }
