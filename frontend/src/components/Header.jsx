@@ -34,7 +34,7 @@ const Header = () => {
         }
     }
   return (
-    <header className='h-16 shadow-md bg-white'>
+    <header className='h-16 shadow-md bg-white fixed w-full z-20'>
         <div className='h-full container mx-auto px-4 flex items-center justify-between'>
             <div className='h-full flex items-center'>
                 <Link to={"/"}>
@@ -75,7 +75,7 @@ const Header = () => {
 
                                 {
                                     menuDisplay && (
-                                    <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded z-10'>
+                                    <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded z-30'>
                                         <nav>
                                             {
                                                 (user?.role === role.admin) && (
