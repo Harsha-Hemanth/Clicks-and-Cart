@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header'
@@ -11,6 +11,7 @@ import { setUserDetails } from './store/userSlice'
 
 function App() {
   const dispatch = useDispatch()
+  const [cartCount, setCartCount] = useState(0)
   
   const fetchUserDetails = async()=>{
       const dataResponse = await fetch(summaryApi.current_user.url, {
@@ -23,16 +24,28 @@ function App() {
       }
   } 
 
+  const fetchCartCount = async()=>{
+    const dataResponse = await fetch(summaryApi.countCartProducts.url, {
+      method: summaryApi.countCartProducts.method,
+      credentials: 'include'
+    })
+    const dataApi = await dataResponse.json()
+    setCartCount(dataApi?.data?.count)
+  }
+
   useEffect(()=>{
     fetchUserDetails()
+    fetchCartCount()
   },[])
 
   return (
     <>
     <Context.Provider value={{
-      fetchUserDetails
+      fetchUserDetails,
+      fetchCartCount,
+      cartCount
     }}>
-      <ToastContainer />
+      <ToastContainer position='top-center'/>
       <Header/>
       <main className='min-h-[calc(100vh-120px)] pt-16'>
         <Outlet/>
