@@ -46,8 +46,20 @@ const summaryApi = {
         method: 'POST',
     },
     countCartProducts: {
-        url: `${backendDomain}/api/countcartproducts`,
+        url: `${backendDomain}/api/count-cartproducts`,
         method: 'GET',
+    },
+    cartProducts: {
+        url: `${backendDomain}/api/cartproducts`,
+        method: 'GET',
+    },
+    updateCart: {
+        url: `${backendDomain}/api/update-cart`,
+        method: 'POST',
+    },
+    deleteCartProduct: {
+        url: `${backendDomain}/api/delete-cartproduct`,
+        method: 'POST',
     }
 
 }

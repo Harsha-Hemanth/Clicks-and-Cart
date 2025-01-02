@@ -14,7 +14,7 @@ async function authToken(req, res, next){
 
         jwt.verify(token, process.env.TOKEN_SECRET_KEY, function(err, decoded) {
             if (err){
-                console.log('error auth', err)
+                throw new Error("invalid token")
             }
             req.userId = decoded._id
             next()
