@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import { setUserDetails } from '../store/userSlice';
 import role from '../common/role';
 import Context from '../context';
+import scrollTop from '../helpers/scrollTop';
 
 
 const Header = () => {
@@ -53,7 +54,7 @@ const Header = () => {
     <header className='h-16 shadow-md bg-white fixed w-full z-20'>
         <div className='h-full container mx-auto px-4 flex items-center justify-between'>
             <div className='h-full flex items-center'>
-                <Link to={"/"}>
+                <Link to={"/"} onClick={scrollTop}>
                     <Logo w={90} h={50}/>
                 </Link>
             </div>

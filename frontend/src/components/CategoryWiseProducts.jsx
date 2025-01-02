@@ -55,8 +55,8 @@ const CategroyWiseProducts = ({category, heading}) => {
                 ) : (
                     data.map((product,index)=>{
                         return(
-                            <Link to={"/product/"+product?._id} className='w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow' key={index} onClick={scrollTop}>
-                                <div className='bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center'>
+                            <Link to={"/product/"+product?._id} className='w-full min-w-[300px]  md:min-w-[320px] max-w-[300px] md:max-w-[320px]  bg-white rounded-sm shadow' key={index} onClick={scrollTop}>
+                                <div className='bg-slate-200 h-48 p-4 min-w-[300px] md:min-w-[145px] flex justify-center items-center'>
                                     <img src={product.image[0]} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                                 </div>
                                 <div className='p-4 grid gap-3'>

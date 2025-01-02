@@ -5,7 +5,7 @@ const addToCartController = async(req,res)=>{
         const { productId } = req?.body
         const userId = req.userId
 
-        const isProductAvailable = await cartProductModel.findOne({ productId })
+        const isProductAvailable = await cartProductModel.findOne({ productId, userId })
 
         if (isProductAvailable){
             return res.json({
