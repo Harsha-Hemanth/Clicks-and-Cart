@@ -16,6 +16,7 @@ const cartProducts = require('../controller/user/cartProducts')
 const updateCart = require('../controller/user/updateCart')
 const deleteCartProduct = require('../controller/user/deleteCartProduct')
 const searchProducts = require('../controller/product/searchProducts')
+const filterProductsController = require('../controller/product/filterProducts')
 
 const router = express.Router()
 
@@ -31,7 +32,8 @@ router.post("/update-product", authToken, updateProductController)
 router.get("/get-category-product", getCategoryProduct)
 router.post("/get-category-products", getCategoryProducts)
 router.post("/get-product-details", getProductDetails)
-router.get("/search-products",searchProducts)
+router.get("/search-products", searchProducts)
+router.post("/filter-products", filterProductsController)
 
 router.post("/addtocart", authToken, addToCartController)
 router.get("/count-cartproducts",authToken, countCartProducts)
