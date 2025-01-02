@@ -5,6 +5,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import addToCart from '../helpers/addToCart'
 import Context from '../context'
+import scrollTop from '../helpers/scrollTop'
 
 const HorizontalCardProduct = ({category, heading}) => {
     const [data, setData] = useState([])
@@ -68,7 +69,7 @@ const HorizontalCardProduct = ({category, heading}) => {
                 ) : (
                     data.map((product, index)=>{
                         return(
-                            <Link to={"product/"+product?._id} className='w-full min-w-[300px] md:min-w-[320px] max-w-[300px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex' key={index}>
+                            <Link to={"product/"+product?._id} className='w-full min-w-[300px] md:min-w-[320px] max-w-[300px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex' key={index} onClick={scrollTop}>
                                 <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]'>
                                     <img src={product.image[0]} alt={product.productName} className='h-full object-scale-down hover:scale-110 transition-all' />
                                 </div>
