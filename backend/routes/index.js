@@ -10,6 +10,7 @@ const updateProductController = require('../controller/product/updateProduct')
 const getCategoryProduct = require('../controller/product/getCategoryProduct')
 const getCategoryProducts = require('../controller/product/getCategoryProducts')
 const getProductDetails = require('../controller/product/getProductDetails')
+const addToCartController = require('../controller/user/addToCart')
 
 const router = express.Router()
 
@@ -26,5 +27,6 @@ router.get("/get-category-product", getCategoryProduct)
 router.post("/get-category-products", getCategoryProducts)
 router.post("/get-product-details", getProductDetails)
 
+router.post("/addtocart", authToken, addToCartController)
 
 module.exports = router
