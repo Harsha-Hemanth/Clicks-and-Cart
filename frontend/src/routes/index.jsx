@@ -11,6 +11,8 @@ import CategoryProducts from '../pages/CategoryProducts'
 import ProductDetails from '../pages/ProductDetails'
 import Cart from '../pages/Cart'
 import SearchProducts from '../pages/SearchProducts'
+import Success from '../pages/Success'
+import Cancel from '../pages/Cancel'
 
 const router = createBrowserRouter([
     {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
             {
                 path: "product/:id",
                 element: <ProductDetails/>
+            },
+            {
+                path: "success",
+                element: <Success/>
+            },
+            {
+                path: "cancel",
+                element: <Cancel/>
             },
             {
                 path: "cart",
