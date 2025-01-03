@@ -13,6 +13,7 @@ import Cart from '../pages/Cart'
 import SearchProducts from '../pages/SearchProducts'
 import Success from '../pages/Success'
 import Cancel from '../pages/Cancel'
+import MyOrders from '../pages/MyOrders'
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
             {
                 path: "search",
                 element: <SearchProducts/>
+            },
+            {
+                path: "myorders",
+                element: <MyOrders/>
             },
             {
                 path: "admin-panel",

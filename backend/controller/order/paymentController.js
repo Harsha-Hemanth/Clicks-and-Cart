@@ -15,6 +15,9 @@ const paymentController = async(req, res)=>{
                 shipping_rate: "shr_1QcrU6Rwf1ii0Pro9IbtWrXK"
             },
             customer_email: user.email,
+            metadata: {
+                userId: req.userId
+            },
             line_items: cartItems.map((item, index)=>{
                 return{
                     price_data: {

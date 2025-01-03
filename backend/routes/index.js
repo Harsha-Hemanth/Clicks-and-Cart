@@ -18,6 +18,8 @@ const deleteCartProduct = require('../controller/user/deleteCartProduct')
 const searchProducts = require('../controller/product/searchProducts')
 const filterProductsController = require('../controller/product/filterProducts')
 const paymentController = require('../controller/order/paymentController')
+const webhooks = require('../controller/order/webhook')
+const myOrdersController = require('../controller/order/myOrdersController')
 
 const router = express.Router()
 
@@ -43,6 +45,8 @@ router.post("/update-cart", authToken, updateCart)
 router.post("/delete-cartproduct", authToken, deleteCartProduct)
 
 router.post('/checkout', authToken, paymentController)
+router.post("/webhook", webhooks) // /api/webhook
+router.get("/myorders", authToken, myOrdersController)
 
 
 module.exports = router
