@@ -96,14 +96,14 @@ const Header = () => {
 
                                 {
                                     menuDisplay && (
-                                    <div className='absolute flex flex-col bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded z-30'>
+                                    <div className='absolute bg-white top-11 bottom-0 h-fit p-2 shadow-lg rounded z-30'>
                                         <nav>
                                             {
                                                 (user?.role === role.admin) && (
-                                                    <Link to={"admin-panel"} className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Admin Panel</Link>
+                                                    <Link to={"admin-panel"} className='whitespace-nowrap block hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Admin Panel</Link>
                                                 )
                                             }
-                                            <Link to={"/myorders"} className='whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>My Orders</Link>
+                                            <Link to={"/myorders"} className='block text-center whitespace-nowrap hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>My Orders</Link>
                                             <button onClick={()=>{setMenuDisplay(preve => !preve); handleLogout()}} className='w-full whitespace-nowrap hover:bg-slate-100 p-2'>Logout</button>
                                         </nav>
                                     </div>
