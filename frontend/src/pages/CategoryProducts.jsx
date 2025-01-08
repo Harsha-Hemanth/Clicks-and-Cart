@@ -18,7 +18,6 @@ const CategoryProducts = () => {
     })
 
     const [selectCategory,setSelectCategory] = useState(urlCategoryListObject)
-    console.log(selectCategory)
     const [filterCategoryList,setFilterCategoryList] = useState([])
 
     const [sortBy,setSortBy] = useState("")
@@ -47,7 +46,6 @@ const CategoryProducts = () => {
               [value] : checked
             }
         })
-        console.log(selectCategory)
     }
 
     useEffect(()=>{
