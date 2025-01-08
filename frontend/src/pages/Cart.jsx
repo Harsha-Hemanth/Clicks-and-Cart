@@ -111,7 +111,7 @@ const Cart = () => {
     }
 
     const handlePayment = async()=>{
-        const stripePromise = await loadStripe(import.meta.env.STRIPE_PUBLIC_KEY)
+        const stripePromise = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
         const response = await fetch(summaryApi.payment.url, {
             method: summaryApi.payment.method,
             credentials: 'include',
