@@ -204,7 +204,7 @@ const Cart = () => {
                                             <p>{displayINR(totalPrice)}</p>    
                                         </div>
 
-                                        <button className='bg-blue-600 p-2 text-white w-full mt-2' onClick={handlePayment()}>Payment</button>
+                                        <button className='bg-blue-600 p-2 text-white w-full mt-2' onClick={handlePayment}>Payment</button>
 
                                     </div>
                                 )
