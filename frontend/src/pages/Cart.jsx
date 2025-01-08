@@ -123,11 +123,10 @@ const Cart = () => {
             })
         })
 
+        const responseData = await response.json()
         if(responseData?.id){
             stripePromise.redirectToCheckout({sessionId: responseData.id})
         }
-
-        const responseData = await response.json()
     }
 
     const totalQty = data.reduce((previousValue, currentValue)=> previousValue + currentValue.quantity,0)
