@@ -7,13 +7,13 @@ const paymentController = async(req, res)=>{
         const user = await userModel.findById(req.userId)
 
         const params = {
-            sumbit_type: 'pay',
+            submit_type: 'pay',
             mode: 'payment',
             payment_method_types: ['card'],
             billing_address_collection: 'auto',
-            shipping_options: {
+            shipping_options: [{
                 shipping_rate: "shr_1QcrU6Rwf1ii0Pro9IbtWrXK"
-            },
+            }],
             customer_email: user.email,
             metadata: {
                 userId: req.userId
@@ -24,7 +24,7 @@ const paymentController = async(req, res)=>{
                         currency: 'inr',
                         product_data: {
                             name: item.productId.productName,
-                            image: item.productId.image,
+                            images: item.productId.image,
                             metadata: {
                                 productId: item.productId._id
                             }
@@ -32,7 +32,7 @@ const paymentController = async(req, res)=>{
                         unit_amount: item.productId.sellingPrice * 100
                     },
                     adjustable_quantity: {
-                        enables: true,
+                        enabled: true,
                         minimum: 1,
                     },
                     quantity: item.quantity
@@ -44,7 +44,7 @@ const paymentController = async(req, res)=>{
 
         const session = await stripe.checkout.sessions.create(params)
 
-        response.status(303).json(session)
+        res.status(303).json(session)
     }catch(err){
         res.json({
             message : err.message || err,

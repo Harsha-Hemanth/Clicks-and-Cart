@@ -119,7 +119,7 @@ const Cart = () => {
                 "content-type" : 'application/json'
             },
             body: JSON.stringify({
-                cartItem: data
+                cartItems: data
             })
         })
 
