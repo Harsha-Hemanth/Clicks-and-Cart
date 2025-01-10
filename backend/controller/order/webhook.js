@@ -39,7 +39,7 @@ const webhooks = async(req, res)=>{
     let event
 
     try{
-        event = stripe.webhooks.constructEvent(payloadString, header, endpointSecret)
+        event = await stripe.webhooks.constructEvent(payloadString, header, endpointSecret)
     }catch(err){
         res.status(400).send(`Webhook Error: ${err.message}`)
         return
