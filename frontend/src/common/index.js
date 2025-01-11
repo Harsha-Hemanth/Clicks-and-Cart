@@ -76,6 +76,10 @@ const summaryApi = {
     myOrders: {
         url: `${backendDomain}/api/myorders`,
         method: 'GET',
+    },
+    orders: {
+        url: `${backendDomain}/api/orders`,
+        method: 'GET',
     }
 
 }
