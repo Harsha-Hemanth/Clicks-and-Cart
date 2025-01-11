@@ -39,7 +39,7 @@ const webhooks = async(req, res)=>{
     let event
 
     try{
-        event = await stripe.webhooks.constructEvent(payloadString, header, endpointSecret)
+        event = stripe.webhooks.constructEvent(payloadString, header, endpointSecret)
     }catch(err){
         res.status(400).send(`Webhook Error: ${err.message}`)
         return
@@ -53,7 +53,7 @@ const webhooks = async(req, res)=>{
             const orderDetails = {
                 productDetails: productDetails,
                 email: session.customer_email,
-                userId: session.metadata>userId,
+                userId: session.metadata.userId,
                 paymentDetails: {
                     paymentId: session.payment_intent,
                     payment_method_type: session.payment_method_types,
