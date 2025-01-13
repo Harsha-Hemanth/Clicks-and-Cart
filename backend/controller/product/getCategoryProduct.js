@@ -3,18 +3,21 @@ const productModel = require("../../models/productModel")
 
 const getCategoryProduct = async(req,res)=>{
     try{
-        const productCategories = await productModel.distinct("category")
 
-        const productByCategory = []
-
-        for(const category of productCategories){
-            const product = await productModel.findOne({category})
-
-            if(product){
-                productByCategory.push(product)
+        const productByCategory = await productModel.aggregate([
+            {
+                $group: {
+                    _id: "$category",
+                    product: { $first: "$$ROOT" }
+                }
+            },
+            {
+                $replaceRoot: { newRoot: "$product"}
+            },
+            {
+                $project: { category: 1, image: { $arrayElemAt: ["$image", 0] }}
             }
-        }
-
+        ])
 
         res.json({
             message : "category product",

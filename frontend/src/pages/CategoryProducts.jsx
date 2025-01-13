@@ -93,7 +93,7 @@ const CategoryProducts = () => {
   return (
       <div className='container mx-auto p-4'>
           <div className='hidden lg:grid grid-cols-[200px,1fr]'>
-              <div className='bg-white p-2 min-h-[calc(100vh-120px)] overflow-y-scroll'>
+              <div className='bg-white p-2 min-h-[calc(100vh-200px)] overflow-y-scroll scrollbar-none'>
                   <div className=''>
                       <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sort by</h3>
 
@@ -131,7 +131,7 @@ const CategoryProducts = () => {
               <div className='px-4'>
                   <p className='font-medium text-slate-800 text-lg my-2'>Search Results : {data.length}</p>
 
-                  <div className='min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]'>
+                  <div className='min-h-[calc(100vh-200px)] overflow-y-scroll max-h-[calc(100vh-200px)] scrollbar-none'>
                       {
                           data.length !== 0 && (
                               <VerticalCard data={data} loading={loading}/>

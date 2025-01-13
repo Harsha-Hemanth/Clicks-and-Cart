@@ -32,12 +32,12 @@ const CategroyWiseProducts = ({category, heading}) => {
   return (
     <div className='container mx-auto px-4 my-6 relative'>
             <h2 className='text-2xl font-semibold py-4'>{heading}</h2>
-            <div className='grid grid-cols-[repeat(auto-fit,minmax(300px,320px))] justify-between md:gap-6 overflow-x-scroll scrollbar-none transition-all'>
+            <div className='grid grid-cols-[repeat(auto-fit,minmax(220px,250px))] justify-between md:gap-6 overflow-x-scroll scrollbar-none transition-all'>
             {
                 loading ? (
                     loadingList.map((product,index)=>{
                         return(
-                            <div className='w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow' key={index}>
+                            <div className='w-full min-w-[220px]  md:min-w-[250px] max-w-[220px] md:max-w-[250px]  bg-white rounded-sm shadow' key={index}>
                                 <div className='bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center animate-pulse'>
                                 </div>
                                 <div className='p-4 grid gap-3'>
@@ -55,8 +55,8 @@ const CategroyWiseProducts = ({category, heading}) => {
                 ) : (
                     data.map((product,index)=>{
                         return(
-                            <Link to={"/product/"+product?._id} className='w-full min-w-[300px]  md:min-w-[320px] max-w-[300px] md:max-w-[320px]  bg-white rounded-sm shadow' key={index} onClick={scrollTop}>
-                                <div className='bg-slate-200 h-48 p-4 min-w-[300px] md:min-w-[145px] flex justify-center items-center'>
+                            <Link to={"/product/"+product?._id} className='w-full min-w-[220px]  md:min-w-[250px] max-w-[220px] md:max-w-[250px]  bg-white rounded-sm shadow' key={index} onClick={scrollTop}>
+                                <div className='bg-slate-200 h-48 p-4 min-w-[220px] md:min-w-[145px] flex justify-center items-center'>
                                     <img src={product.image[0]} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                                 </div>
                                 <div className='p-4 grid gap-3'>

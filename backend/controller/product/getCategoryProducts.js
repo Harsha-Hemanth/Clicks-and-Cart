@@ -3,7 +3,13 @@ const productModel = require("../../models/productModel")
 const getCategoryProducts = async(req,res)=>{
     try{
         const { category } = req?.body || req?.query
-        const products = await productModel.find({ category })
+        const products = await productModel.find({ category }).select({
+            productName: 1,
+            price: 1,
+            sellingPrice: 1,
+            image: { $slice: 1},
+            brand: 1
+        })
 
         res.json({
             message : "Products fetched successfully",

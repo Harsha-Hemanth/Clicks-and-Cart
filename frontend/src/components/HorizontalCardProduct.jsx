@@ -75,12 +75,12 @@ const HorizontalCardProduct = ({category, heading}) => {
                                 </div>
                                 <div className='p-4 grid'>
                                     <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black'>{product?.productName}</h2>
-                                    <p className='capitalize text-slate-500'>{product?.category}</p>
+                                    <p className='capitalize text-slate-500'>{product?.brand}</p>
                                     <div className='flex gap-3'>
                                         <p className='text-red-600 font-medium'>{displayINR(product?.sellingPrice)}</p>
                                         <p className='text-slate-500 line-through'>{displayINR(product?.price)}</p>
                                     </div>
-                                    <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full' onClick={(e)=>handleAddToCart(e, product._id)}>Add to Cart</button>
+                                    <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-8 py-0.5 rounded-full mx-auto' onClick={(e)=>handleAddToCart(e, product._id)}>Add to Cart</button>
                                 </div>
                             </Link>
                         )

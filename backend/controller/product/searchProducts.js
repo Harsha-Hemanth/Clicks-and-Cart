@@ -10,6 +10,12 @@ const searchProducts = async(req, res)=>{
                 {productName: regex},
                 {category: regex}
             ]
+        }).select({
+            productName: 1,
+            price: 1,
+            sellingPrice: 1,
+            image: { $slice: 1},
+            brand: 1
         })
 
         res.json({

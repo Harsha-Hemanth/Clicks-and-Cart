@@ -7,6 +7,12 @@ const filterProductsController = async(req,res)=>{
             category :  {
                 "$in" : categoryList
             }
+        }).select({
+            productName: 1,
+            price: 1,
+            sellingPrice: 1,
+            image: { $slice: 1},
+            brand: 1
         })
 
         res.json({
