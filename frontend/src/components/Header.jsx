@@ -54,7 +54,7 @@ const Header = () => {
     <header className='h-16 shadow-md bg-white fixed w-full z-20'>
         <div className='h-full container mx-auto px-4 flex items-center justify-between'>
             <div className='h-full flex items-center'>
-                <Link to={"/"} onClick={scrollTop}>
+                <Link to={"/"} name="Clicks and Cart" onClick={scrollTop}>
                     <Logo w={90} h={50}/>
                 </Link>
             </div>

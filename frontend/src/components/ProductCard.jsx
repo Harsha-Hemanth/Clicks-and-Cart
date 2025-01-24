@@ -9,7 +9,7 @@ const ProductCard = ({data, fetchdata}) => {
     <div className='bg-white p-4 rounded'>
         <div className='w-40'>
             <div className='w-40 h-40 flex justify-center items-center'>
-                <img src={data?.image[0]} className='mx-auto object-scale-down h-full' alt="product image"/>
+                <img src={data?.image[0]} className='mx-auto object-scale-down h-full' alt={data?.productName}/>
             </div>
             <h1 className='text-ellipsis line-clamp-2'>{data?.productName}</h1>
             <p className='font-semibold'>
