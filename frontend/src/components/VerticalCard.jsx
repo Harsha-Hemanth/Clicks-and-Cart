@@ -39,7 +39,7 @@ const VerticalCard = ({loading, data = []}) => {
              data.map((product,index)=>{
                  return(
                      <Link to={"/product/"+product?._id} className='w-full min-w-[220px]  md:min-w-[250px] max-w-[220px] md:max-w-[250px]  bg-white rounded-sm shadow' key={index} onClick={scrollTop}>
-                         <div className='bg-slate-200 h-48 p-4 min-w-[145px] md:min-w-[180px] flex justify-center items-center'>
+                         <div className='bg-slate-200 h-48 p-4 min-w-[220px] md:min-w-[250px] flex justify-center items-center'>
                              <img src={product?.image[0]} loading='lazy' alt={product?.productName} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                          </div>
                          <div className='p-4 grid gap-3'>
