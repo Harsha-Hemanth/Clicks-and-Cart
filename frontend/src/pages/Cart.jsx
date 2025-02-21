@@ -157,7 +157,7 @@ const Cart = () => {
                         return(
                         <div key={index} className='w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]'>
                             <div className='w-32 h-32 bg-slate-200'>
-                                <img src={product?.productId?.image[0]} className='w-full h-full object-scale-down mix-blend-multiply' />
+                                <img src={product?.productId?.image[0]} loading='lazy' className='w-full h-full object-scale-down mix-blend-multiply' />
                             </div>
                             <div className='px-4 py-2 relative'>
                                 <div className='absolute right-2 text-grey-600 rounded-full p-2 hover:bg-gray-600 hover:text-white cursor-pointer' onClick={()=>deleteCartProduct(product?._id)}>

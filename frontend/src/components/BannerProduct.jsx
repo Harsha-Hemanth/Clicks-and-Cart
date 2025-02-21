@@ -60,7 +60,7 @@ const BannerProduct = () => {
                     img.map((image, index)=>{
                         return(
                             <div className='w-full h-full min-w-full min-h-full transition-all' key={image} style={{transform: `translateX(-${currentImage * 100}%`}} >
-                                <img src={image} alt="banner" className='w-full h-full object-fit' />
+                                <img src={image} loading='lazy' alt="banner" className='w-full h-full object-fit' />
                             </div>
                         )
                     })
@@ -72,7 +72,7 @@ const BannerProduct = () => {
                         imgMobile.map((image,index)=>{
                             return(
                             <div className='w-full h-full min-w-full min-h-full transition-all' key={image} style={{transform : `translateX(-${currentImage * 100}%)`}}>
-                                <img src={image} alt='banner' className='w-full h-full object-fit'/>
+                                <img src={image} loading='lazy' alt='banner' className='w-full h-full object-fit'/>
                             </div>
                             )
                         })

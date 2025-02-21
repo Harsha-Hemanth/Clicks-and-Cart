@@ -11,7 +11,7 @@ const CategoryList = ()=>{
                         return(
                             <Link to={"/category-products?category="+product} className="cursor-pointer group" key={product} >
                                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden p-4 bg-slate-200 flex items-center justify-center">
-                                    <img src={`/categories/${product}.webp`} alt={product} className="h-full object-scale-down mix-blend-multiply group-hover:scale-125 transition-all" />
+                                    <img src={`/categories/${product}.webp`} loading="lazy" alt={product} className="h-full object-scale-down mix-blend-multiply group-hover:scale-125 transition-all" />
                                 </div>
                                 <p className="text-center text-sm md:text-base capitalize">{product}</p>
                             </Link>

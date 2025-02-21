@@ -38,7 +38,7 @@ const MyOrders = () => {
                                     item?.productDetails.map((product, index)=>{
                                         return(
                                             <div key={index+"product"} className='flex gap-3 bg-slate-100'>
-                                                <img className='w-20 h-20 bg-slate-200 object-scale-down p-2' src={product.image[0]} alt="product" />
+                                                <img className='w-20 h-20 bg-slate-200 object-scale-down p-2' src={product.image[0]} loading='lazy' alt="product" />
                                                 <div>
                                                     <p className='font-medium text-lg text-ellipsis line-clamp-1'>{product.name}</p>
                                                     <div className='flex items-center gap-5 mt-1'>

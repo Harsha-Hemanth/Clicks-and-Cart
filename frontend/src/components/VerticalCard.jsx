@@ -40,7 +40,7 @@ const VerticalCard = ({loading, data = []}) => {
                  return(
                      <Link to={"/product/"+product?._id} className='w-full min-w-[220px]  md:min-w-[250px] max-w-[220px] md:max-w-[250px]  bg-white rounded-sm shadow' key={index} onClick={scrollTop}>
                          <div className='bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center'>
-                             <img src={product?.image[0]} alt={product?.productName} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
+                             <img src={product?.image[0]} loading='lazy' alt={product?.productName} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                          </div>
                          <div className='p-4 grid gap-3'>
                              <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black'>{product?.productName}</h2>

@@ -55,7 +55,7 @@ const Header = () => {
         <div className='h-full container mx-auto px-4 flex items-center justify-between'>
             <div className='h-full flex items-center'>
                 <Link to={"/"} name="Clicks and Cart" onClick={scrollTop}>
-                    <Logo w={90} h={50}/>
+                    <Logo alt='logo' w={90} h={50}/>
                 </Link>
             </div>
 
