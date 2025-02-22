@@ -35,8 +35,13 @@ const ProductDetails = () => {
     const navigate = useNavigate()
 
     const handleAddToCart = async(e, id)=>{
-        await addToCart(e, id)
-        fetchCartCount()
+        const responseData = await addToCart(e, id)
+        if (responseData.success){
+            toast.success(responseData.message)
+            fetchCartCount()
+        } else{
+            toast.error(responseData.message)
+        }
     }
 
     const fetchProductDetails = async()=>{
@@ -75,9 +80,14 @@ const ProductDetails = () => {
     }
 
     const handleBuyProduct = async(e, id)=>{
-        await addToCart(e, id)
-        fetchCartCount()
-        navigate("/cart")
+        const responseData = await addToCart(e, id)
+        if (responseData.success){
+            toast.success(responseData.message)
+            fetchCartCount()
+            navigate("/cart")
+        } else{
+            toast.error(responseData.message)
+        }
     }
   return (
     <div className='container mx-auto p-4'>

@@ -1,5 +1,4 @@
 import summaryApi from "../common"
-import { toast } from "react-toastify"
 
 const addToCart = async(e, id)=>{
     e?.stopPropagation()
@@ -15,12 +14,6 @@ const addToCart = async(e, id)=>{
     })
 
     const responseData = await response.json()
-
-    if (responseData.success){
-        toast.success(responseData.message)
-    } else{
-        toast.error(responseData.message)
-    }
 
     return responseData
 }

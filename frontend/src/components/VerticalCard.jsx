@@ -10,8 +10,13 @@ const VerticalCard = ({loading, data = []}) => {
     const { fetchCartCount } = useContext(Context)
 
     const handleAddToCart = async(e, id)=>{
-       await addToCart(e, id)
-       fetchCartCount()
+        const responseData = await addToCart(e, id)
+        if (responseData.success){
+            toast.success(responseData.message)
+            fetchCartCount()
+        } else{
+            toast.error(responseData.message)
+        }
     }
 
   return (
