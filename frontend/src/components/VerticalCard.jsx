@@ -4,6 +4,7 @@ import displayINR from '../helpers/displayCurrency'
 import Context from '../context'
 import addToCart from '../helpers/addToCart'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const VerticalCard = ({loading, data = []}) => {
     const loadingList = new Array(13).fill(null)

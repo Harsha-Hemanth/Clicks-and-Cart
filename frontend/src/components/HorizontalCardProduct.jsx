@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import addToCart from '../helpers/addToCart'
 import Context from '../context'
 import scrollTop from '../helpers/scrollTop'
+import { toast } from 'react-toastify';
 
 const HorizontalCardProduct = ({category, heading}) => {
     const [data, setData] = useState([])

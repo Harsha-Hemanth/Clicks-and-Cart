@@ -6,6 +6,7 @@ import displayINR from '../helpers/displayCurrency'
 import CategroyWiseProducts from '../components/CategoryWiseProducts'
 import Context from '../context'
 import addToCart from '../helpers/addToCart'
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
     const [data, setData] = useState({
